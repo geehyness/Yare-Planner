@@ -41,6 +41,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         navProfile = findViewById(R.id.navProfile);
         navSettings = findViewById(R.id.navSettings);
         navOpen = findViewById(R.id.navOpen);
+        navOpen.setZ(3f);
 
         addTaskPanel = findViewById(R.id.addTaskPanel);
         btnAddTask = findViewById(R.id.btnAddTask);
@@ -52,7 +53,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btnAddTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addTaskPanel.bringToFront();
+                container.setZ(1f);
+                addTaskPanel.setZ(2f);
                 slideActivityAddIn();
                 btnAddTask.hide();
             }
@@ -73,7 +75,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 new Handler().postDelayed(new Runnable(){
                     @Override
                     public void run() {
-                        container.bringToFront();
+                        //container.bringToFront();
+                        container.setZ(2f);
+                        addTaskPanel.setZ(1f);
                     }
                 }, 500);
             }
@@ -217,7 +221,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void setupInputPanel(){
-        container.bringToFront();
+        container.setZ(2f);
+        addTaskPanel.setZ(1f);
 
         new Handler().postDelayed(new Runnable(){
             @Override
